@@ -577,13 +577,16 @@ html {
   animation: contactBgAnim 8s ease-in-out infinite alternate;
 }
 
+
 .contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      
+  text-align: center;
   gap: 36px;
   width: 100%;
-  max-width: 1100px;
-  align-items: start;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .contact-info, .contact-map {
@@ -686,13 +689,26 @@ html {
 }
 
 /* Responsive */
-@media (max-width: 900px) {
+@media (max-width: 600px) {
   .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    max-width: 100%;
+    padding: 0 4px;
+    gap: 20px;
   }
-  .contact-info, .contact-form, .contact-map {
-    max-width: 500px;
-    margin: 0 auto;
+  .contact-info,
+  .contact-form,
+  .contact-map {
+    max-width: 100%;
+    width: 100%;
+    padding: 18px 6px;
+    box-sizing: border-box;
+  }
+  .contact-form {
+    min-width: 0;
+    padding: 18px 6px;
+  }
+  .contact-map img,
+  .contact-map iframe {
+    min-height: 120px;
   }
 }

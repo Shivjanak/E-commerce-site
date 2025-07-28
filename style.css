@@ -396,6 +396,120 @@ html {
   color: #d35400;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
+/* ...existing code... */
+
+.category-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 0;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+}
+
+/* Mobile: horizontal scroll */
+@media (max-width: 768px) {
+  .category-scroll {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 10px;
+  }
+  .category-card {
+    min-width: 140px;
+    flex: 0 0 auto;
+  }
+  .category-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+  .category-scroll::-webkit-scrollbar-thumb {
+    background: #ffb74d;
+    border-radius: 5px;
+  }
+}
+
+/* Desktop: center and wrap */
+@media (min-width: 769px) {
+  .category-scroll {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+  .category-card {
+    min-width: 0;
+  }
+}
+/* ...existing code... */
+
+.category-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 0;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+}
+
+/* Mobile: horizontal scroll */
+@media (max-width: 768px) {
+  .category-scroll {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 10px;
+  }
+  .category-card {
+    min-width: 140px;
+    flex: 0 0 auto;
+  }
+  .category-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+  .category-scroll::-webkit-scrollbar-thumb {
+    background: #ffb74d;
+    border-radius: 5px;
+  }
+}
+
+/* Desktop: center and wrap */
+@media (min-width: 769px) {
+  .category-scroll {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+  .category-card {
+    min-width: 0;
+  }
+}@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.menu-card 
+ {
+  /* ...existing styles... */
+  animation: slideInRight 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.menu-card:nth-child(1) { animation-delay: 0.1s; }
+.menu-card:nth-child(2) { animation-delay: 0.2s; }
+.menu-card:nth-child(3) { animation-delay: 0.3s; }
+.menu-card:nth-child(4) { animation-delay: 0.4s; }
+.menu-card:nth-child(5) { animation-delay: 0.5s; }
+/* Add more as needed */
 
 .menu-items {
   display: flex;

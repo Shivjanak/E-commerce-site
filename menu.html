@@ -39,7 +39,12 @@
 <section class="menu-section" id="menuSection">
   <h2>Our Products</h2>
   <div class="menu-items" id="menuItems">
-    <!-- Products will be injected here -->
+    <div class="menu-card" id="animatedCard" style="opacity:1;">
+      <img src="" alt="" id="animatedImg">
+      <h3 id="animatedName"></h3>
+      <p class="price" id="animatedPrice"></p>
+      <a href="https://wa.me/919867468135?text=Hello.%0AI%20have%20a%20question%20about%20your%20service.%0ACan%20you%20help%20me%3F" class="order-btn">Order Now</a>
+    </div>
   </div>
 </section>
 
@@ -96,24 +101,25 @@
     
   };
 
-  function filterMenu(category) {
-    const menuItems = document.getElementById("menuItems");
-    menuItems.innerHTML = ""; // clear current content
+function filterMenu(category) {
+  const menuItems = document.getElementById("menuItems");
+  menuItems.innerHTML = ""; // clear current content
 
-    products[category].forEach(item => {
-      const card = `
-        <div class="menu-card">
-          <img src="${item.img}" alt="${item.name}">
-          <h3>${item.name}</h3>
-          <p class="price">${item.price}</p>
-          <a href="#" class="order-btn">Order Now</a>
-        </div>
-      `;
-      menuItems.innerHTML += card;
-    });
-  }
-
+  products[category].forEach(item => {
+    const message = encodeURIComponent(`Hello, I want to order: ${item.name} (${item.price})`);
+    const card = `
+      <div class="menu-card">
+        <img src="${item.img}" alt="${item.name}">
+        <h3>${item.name}</h3>
+        <p class="price">${item.price}</p>
+        <a href="https://wa.me/919867468135?text=${message}" class="order-btn" target="_blank">Order Now</a>
+      </div>
+    `;
+    menuItems.innerHTML += card;
+  });
+}
   // Load default category on page load
   window.onload = () => filterMenu('fried');
 </script>
+
 </body>

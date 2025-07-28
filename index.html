@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fresh Farsan</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+</head>
+<body>
+
+  <!-- Navbar -->
+  <<nav class="navbar">
+  <div class="logo">
+    <img src="logo.webp" alt="Fresh Farsan Logo" class="logo-img">
+    <span class="shop-name">Fresh Farsan</span>
+    <a href="https://maps.app.goo.gl/r18oM5sDZbh6LEP16" target="_blank" class="location-icon" title="View on Map">
+      <i class="fas fa-map-marker-alt"></i>
+    </a>
+  </div>
+
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()"></div>
+  <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#" class="login-btn">Login</a></li>
+  </ul>
+</nav>
+
+
+  <!-- Page Content -->
+  <div class="container">
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Welcome to Fresh Farsan</h1>
+          <p>Delicious snacks made fresh every day!</p>
+          <a href="menu.html" class="btn">Explore Menu</a>
+        </div>  
+      </section>
+
+      <!-- Featured Products -->
+      <section class="featured" id="menu">
+        <h2>Our Bestsellers</h2>
+        <div class="products">
+          <div class="product">
+            <img src="masal khakra.webp" alt="Khakhra">
+            <h3>Masala Khakhra</h3>
+            <p>₹100 / pack</p>
+          </div>
+          <div class="product">
+            <img src="mix ghatiya.jpg" alt="Namkeen">
+            <h3>Mix Ghatiya</h3>
+            <p>₹80 / pack</p>
+          </div>
+          <div class="product">
+            <img src="lashun chivda.webp" alt="Fafda">
+            <h3>Lashun Chivda</h3>
+            <p>₹150 / pack</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Us Section -->
+      <section class="about">
+        <h2>About Fresh Farsan</h2>
+        <p>
+          At Fresh Farsan, we specialize in traditional Gujarati snacks made from the finest ingredients. Whether you're craving crunchy khakhra, spicy namkeen, or fresh fafda, we've got it all – made with love and served fresh daily.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p style="text-align:center; padding: 10px;">&copy; 2025 Fresh Farsan. All rights reserved.</p>
+  </footer>
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    const overlay = document.getElementById("overlay");
+    const hamburger = document.getElementById("hamburger");
+
+    nav.classList.toggle("show");
+    overlay.classList.toggle("show");
+    hamburger.classList.toggle("active");
+  }
+
+  function closeMenu() {
+    document.getElementById("navLinks").classList.remove("show");
+    document.getElementById("overlay").classList.remove("show");
+    document.getElementById("hamburger").classList.remove("active");
+  }
+
+  // Close nav when a link is clicked
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      closeMenu();
+    });
+  });
+
+  // Close nav on ESC key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeMenu();
+    }
+  });
+</script>
+
+</body>
+
+</html>

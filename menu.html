@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu | Fresh Farsan</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navbar (same as index.html) -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="logo.webp" alt="Fresh Farsan Logo" class="logo-img">
+      <span class="shop-name">Fresh Farsan</span>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()"></div>
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html" class="active">Menu</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#" class="login-btn">Login</a></li>
+    </ul>
+  </nav>
+  <!-- Hero Category Section -->
+<section class="menu-hero">
+  <h2>Choose a Category</h2>
+  <div class="category-scroll">
+    <div class="category-card" onclick="filterMenu('fried')">Fried Snacks</div>
+<div class="category-card" onclick="filterMenu('roasted')">Roasted Snacks</div>
+<div class="category-card" onclick="filterMenu('sweets')">Sweets</div>
+<div class="category-card" onclick="filterMenu('namkeen')">Namkeen</div>
+  </div>
+</section>
+
+<!-- Dynamic Menu Content -->
+<section class="menu-section" id="menuSection">
+  <h2>Our Products</h2>
+  <div class="menu-items" id="menuItems">
+    <!-- Products will be injected here -->
+  </div>
+</section>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    const overlay = document.getElementById("overlay");
+    const hamburger = document.getElementById("hamburger");
+
+    nav.classList.toggle("show");
+    overlay.classList.toggle("show");
+    hamburger.classList.toggle("active");
+  }
+
+  function closeMenu() {
+    document.getElementById("navLinks").classList.remove("show");
+    document.getElementById("overlay").classList.remove("show");
+    document.getElementById("hamburger").classList.remove("active");
+  }
+
+  // Close menu on nav link click
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      closeMenu();
+    });
+  });
+
+  // Close on ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeMenu();
+    }
+  });
+</script>
+<script>
+  const products = {
+    fried: [
+      { name: "Banana Chips", price: "₹50", img: "banana chips.jpg" },
+      { name: "Chakli", price: "₹45", img: "chakli.webp" },
+      { name: "Kachori", price: "₹30", img: "kachori.jpg" }
+    ],
+    roasted: [
+      { name: "Roasted Channa", price: "₹60", img: "Roasted Channa.webp" },
+      { name: "Roasted Peanuts", price: "₹65", img: "Roasted peanuts.png" }
+    ],
+    sweets: [
+      { name: "Khajoor", price: "₹80", img: "Khajoor.jpg" },
+      { name: "Juggery", price: "₹100", img: "jugery.webp" }
+    ],
+    namkeen: [
+      { name: "Ratlami Mixture", price: "₹80", img: "Ratlami Mixture.webp" },
+      { name: "Punjabi Tadka", price: "₹70", img: "Punjabi Tadka.webp" }
+    ],
+    
+  };
+
+  function filterMenu(category) {
+    const menuItems = document.getElementById("menuItems");
+    menuItems.innerHTML = ""; // clear current content
+
+    products[category].forEach(item => {
+      const card = `
+        <div class="menu-card">
+          <img src="${item.img}" alt="${item.name}">
+          <h3>${item.name}</h3>
+          <p class="price">${item.price}</p>
+          <a href="#" class="order-btn">Order Now</a>
+        </div>
+      `;
+      menuItems.innerHTML += card;
+    });
+  }
+
+  // Load default category on page load
+  window.onload = () => filterMenu('fried');
+</script>
+</body>

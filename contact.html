@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Arti Farsan</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="logo.webp" alt="Arti Farsan Logo" class="logo-img">
+      <span class="shop-name">Arti Farsan</span>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()"></div>
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="#" class="login-btn">Login</a></li>
+    </ul>
+  </nav>
+
+  <section class="contact-section">
+  <div class="contact-grid">
+    <!-- Part 1: Contact Info -->
+    <div class="contact-info">
+      <h2>Contact Us</h2>
+      <div class="contact-details">
+        <p><strong>Phone:</strong> <a href="tel:+919867468135">+91 98674 68135</a></p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/919867468135" target="_blank">Chat on WhatsApp</a></p>
+        <p><strong>Address:</strong> Virar East, Near Vidya Mandir English School</p>
+      </div>
+    </div>
+    <!-- Part 2: Contact Form -->
+    <form class="contact-form">
+      <h3>Send us a Message</h3>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+    <!-- Part 3: Map or Image -->
+    <div class="contact-map">
+      <h3>Find Us</h3>
+      <a href="https://maps.app.goo.gl/HU4RjyNDyo7GRjVH9" target="_blank">
+        <img src="map.png" alt="Our Location" style="width:100%; border-radius:12px; margin-top:10px; min-height:180px; box-shadow:0 2px 10px rgba(255,153,0,0.10);" />
+       </a> 
+    </div>
+      
+  </div>
+</section>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navLinks");
+      const overlay = document.getElementById("overlay");
+      const hamburger = document.getElementById("hamburger");
+      nav.classList.toggle("show");
+      overlay.classList.toggle("show");
+      hamburger.classList.toggle("active");
+    }
+    function closeMenu() {
+      document.getElementById("navLinks").classList.remove("show");
+      document.getElementById("overlay").classList.remove("show");
+      document.getElementById("hamburger").classList.remove("active");
+    }
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        closeMenu();
+      });
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeMenu();
+      }
+    });
+    // Prevent form submission (demo only)
+    document.querySelector('.contact-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Thank you for contacting us!');
+    });
+  </script>
+</body>
+</html>
